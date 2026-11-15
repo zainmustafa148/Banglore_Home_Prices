@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bengaluru Home Index — Price Estimator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+<div class="page">
+
+    <aside class="panel panel--info">
+        <div class="panel-inner">
+            <p class="brand">Bengaluru Home Index</p>
+            <h1>What's a fair price<br>for this home?</h1>
+            <p class="lede">Enter a few details and we'll estimate a market value, based on recent sale prices across Bengaluru's neighbourhoods.</p>
+
+            <div class="price-display">
+                <span class="price-display__label">Estimated value</span>
+                <div id="uiEstimatedPrice" class="price-display__figure">
+                    <h2>—</h2>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <main class="panel panel--form">
+        <div class="panel-inner">
+            <form class="form" onsubmit="return false;">
+
+                <div class="field">
+                    <label for="uiSqft">Area, in square feet</label>
+                    <input class="field__input" type="text" inputmode="numeric" id="uiSqft" name="Squareft" value="1000">
+                </div>
+
+                <div class="field">
+                    <label>Bedrooms</label>
+                    <div class="segmented" role="radiogroup" aria-label="Bedrooms">
+                        <input type="radio" id="radio-bhk-1" name="uiBHK" value="1"/>
+                        <label for="radio-bhk-1">1</label>
+                        <input type="radio" id="radio-bhk-2" name="uiBHK" value="2" checked/>
+                        <label for="radio-bhk-2">2</label>
+                        <input type="radio" id="radio-bhk-3" name="uiBHK" value="3"/>
+                        <label for="radio-bhk-3">3</label>
+                        <input type="radio" id="radio-bhk-4" name="uiBHK" value="4"/>
+                        <label for="radio-bhk-4">4</label>
+                        <input type="radio" id="radio-bhk-5" name="uiBHK" value="5"/>
+                        <label for="radio-bhk-5">5</label>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label>Bathrooms</label>
+                    <div class="segmented" role="radiogroup" aria-label="Bathrooms">
+                        <input type="radio" id="radio-bath-1" name="uiBathrooms" value="1"/>
+                        <label for="radio-bath-1">1</label>
+                        <input type="radio" id="radio-bath-2" name="uiBathrooms" value="2" checked/>
+                        <label for="radio-bath-2">2</label>
+                        <input type="radio" id="radio-bath-3" name="uiBathrooms" value="3"/>
+                        <label for="radio-bath-3">3</label>
+                        <input type="radio" id="radio-bath-4" name="uiBathrooms" value="4"/>
+                        <label for="radio-bath-4">4</label>
+                        <input type="radio" id="radio-bath-5" name="uiBathrooms" value="5"/>
+                        <label for="radio-bath-5">5</label>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="uiLocations">Location</label>
+                    <select class="field__input field__input--select" id="uiLocations">
+                        <option value="" disabled selected>Choose a location</option>
+                        <option>Electronic City</option>
+                        <option>Rajaji Nagar</option>
+                    </select>
+                </div>
+
+                <button class="submit" onclick="onClickedEstimatePrice()" type="button">Estimate price</button>
+
+            </form>
+        </div>
+    </main>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

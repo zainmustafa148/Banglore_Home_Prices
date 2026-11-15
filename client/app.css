@@ -1,0 +1,234 @@
+:root {
+    --ink: #14202B;
+    --ink-soft: #223140;
+    --paper: #F6F3EC;
+    --paper-line: #E1D9C8;
+    --charcoal: #21262B;
+    --charcoal-soft: #5B6570;
+    --brass: #B8863F;
+    --brass-soft: #E7D3AC;
+    --sage: #6B8F71;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--charcoal);
+    background: var(--paper);
+}
+
+.page {
+    display: grid;
+    grid-template-columns: minmax(280px, 38%) 1fr;
+    min-height: 100vh;
+}
+
+.panel-inner {
+    width: 100%;
+    max-width: 420px;
+}
+
+/* ---------- Left: info / result panel ---------- */
+
+.panel--info {
+    background: var(--ink);
+    color: var(--paper);
+    display: flex;
+    align-items: center;
+    padding: 56px 48px;
+}
+
+.brand {
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    color: var(--brass-soft);
+    margin: 0 0 28px;
+}
+
+.panel--info h1 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 1.15;
+    margin: 0 0 20px;
+    color: #FFFFFF;
+}
+
+.lede {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #B7C2CC;
+    margin: 0 0 48px;
+    max-width: 34ch;
+}
+
+.price-display {
+    border-top: 1px solid var(--ink-soft);
+    padding-top: 28px;
+}
+
+.price-display__label {
+    display: block;
+    font-size: 13px;
+    color: #8B98A3;
+    margin-bottom: 10px;
+}
+
+.price-display__figure h2 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 1;
+    margin: 0;
+    color: var(--brass-soft);
+    transition: color 0.2s ease;
+}
+
+/* ---------- Right: form panel ---------- */
+
+.panel--form {
+    display: flex;
+    align-items: center;
+    padding: 56px 48px;
+}
+
+.field {
+    margin-bottom: 28px;
+}
+
+.field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--charcoal-soft);
+    margin-bottom: 10px;
+}
+
+.field__input {
+    width: 100%;
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--charcoal);
+    background: #FFFFFF;
+    border: 1px solid var(--paper-line);
+    border-radius: 6px;
+    padding: 12px 14px;
+    outline: none;
+    transition: border-color 0.15s ease;
+}
+
+.field__input:focus {
+    border-color: var(--brass);
+}
+
+.field__input--select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%235B6570' stroke-width='1.5' fill='none' fill-rule='evenodd'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+}
+
+/* Segmented control (BHK / Bath) */
+
+.segmented {
+    display: flex;
+    border: 1px solid var(--paper-line);
+    border-radius: 6px;
+    overflow: hidden;
+    width: fit-content;
+}
+
+.segmented input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+}
+
+.segmented label {
+    margin: 0;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--charcoal-soft);
+    background: #FFFFFF;
+    border-right: 1px solid var(--paper-line);
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.segmented label:last-of-type {
+    border-right: none;
+}
+
+.segmented input:checked + label {
+    background: var(--ink);
+    color: var(--paper);
+}
+
+.segmented input:focus-visible + label {
+    outline: 2px solid var(--brass);
+    outline-offset: -2px;
+}
+
+/* Submit */
+
+.submit {
+    width: 100%;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    color: #FFFFFF;
+    background: var(--brass);
+    border: none;
+    border-radius: 6px;
+    padding: 14px;
+    margin-top: 8px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.submit:hover {
+    background: #A3762F;
+}
+
+.submit:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 860px) {
+    .page {
+        grid-template-columns: 1fr;
+    }
+
+    .panel--info,
+    .panel--form {
+        padding: 40px 24px;
+    }
+
+    .panel--info h1 {
+        font-size: 32px;
+    }
+
+    .panel-inner {
+        max-width: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}
